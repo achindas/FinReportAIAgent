@@ -30,7 +30,7 @@ writing_tasks = [
         Provide an analysis of possible future scenarios. 
         """]
 
-exporting_task = ["""Save the report and only the report to a .md file using a python script."""]
+# exporting_task = ["""Save the report and only the report to a .md file using a python script."""]
 
 financial_assistant = autogen.AssistantAgent(
     name="Financial_assistant",
@@ -54,10 +54,10 @@ writer = autogen.AssistantAgent(
         """,
 )
 
-export_assistant = autogen.AssistantAgent(
-    name="Exporter",
-    llm_config=llm_config,
-)
+# export_assistant = autogen.AssistantAgent(
+#     name="Exporter",
+#     llm_config=llm_config,
+# )
 # ===
 
 critic = autogen.AssistantAgent(
@@ -265,19 +265,19 @@ if start_button is True:
                     "carryover": "I want to include a figure and a table of the provided data in the financial report.",
                     "max_turns": 2,
                     "summary_method": "last_msg",
-                },
-                {
-                    "sender": user_proxy_auto,
-                    "recipient": export_assistant,
-                    "message": exporting_task[0],
-                    "carryover": "Wait for confirmation of code execution before terminating the conversation. Reply TERMINATE in the end when everything is done.",
                 }
+                # {
+                #     "sender": user_proxy_auto,
+                #     "recipient": export_assistant,
+                #     "message": exporting_task[0],
+                #     "carryover": "Wait for confirmation of code execution before terminating the conversation. Reply TERMINATE in the end when everything is done.",
+                # }
             ]
         )
 
     st.session_state.trend_img = "./coding/normalized_prices.png"
     # Retrieve the Markdown report content
-    st.session_state.markdown_report = chat_results[-2].chat_history[-1]["content"]
+    st.session_state.markdown_report = chat_results[-1].chat_history[-1]["content"]
 
 
 # Display Markdown report only if the Markdown byte is not empty
@@ -319,7 +319,7 @@ if st.session_state.log_output is None:
 
 # Display logs inside an expandable container
 with st.expander("🔍 Click to view the logs of AI Agent interactions"):
-    st.text_area("Logs:", st.session_state.log_output, height=200)
+    st.text_area("Logs:", st.session_state.log_output, height=400)
 
 #import pprint
 #pprint.pprint(chat_results.cost)

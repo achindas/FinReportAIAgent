@@ -1,0 +1,13 @@
+### App Specific ###
+/Debug_Code_V1_0.ipynb
+/Application-Financial_Report.py
+/financial_report_old.md
+
+# Environments
+/.venv
+/myvenv
+/.DS_Store
+/__pycache__
+/.ipynb_checkpoints
+/.cache
+/.git

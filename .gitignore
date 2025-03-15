@@ -1,0 +1,9 @@
+### App Specific ###
+/__pycache__
+/.venv
+/myvenv
+/.DS_Store
+/OPENAI_API_Key.txt
+/.ipynb_checkpoints
+/.cache
+/coding
